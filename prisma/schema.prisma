@@ -1,0 +1,149 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               String    @id @default(auto()) @map("_id") @db.ObjectId
+  name             String?
+  email            String    @unique
+  image            String?
+  phone            String?
+  emailVerified    DateTime?
+  address          Address?
+  role             String    @default("user")
+  hashedPassword   String?
+  otp              String?
+  otpExpires       DateTime?
+  forgotOtp        String?
+  forgotOtpExpires DateTime?
+  active           Boolean   @default(false)
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  accounts  Account[]
+  carts     Cart[]
+  orders    Order[]
+  cartItems CartItem[]
+
+  @@map("users")
+}
+
+type Address {
+  locality String?
+  city     String?
+  district String?
+  state    String?
+  pincode  String?
+}
+
+model Account {
+  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId            String  @db.ObjectId
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Product {
+  id              String     @id @default(auto()) @map("_id") @db.ObjectId
+  name            String
+  price           Int
+  photo           String
+  description     String
+  images          String[]
+  fullDescription String[]
+  cartItems       CartItem[]
+
+  @@map("products")
+}
+
+model Cart {
+  id         String     @id @default(auto()) @map("_id") @db.ObjectId
+  userId     String     @unique @db.ObjectId
+  user       User       @relation(fields: [userId], references: [id])
+  cartItems  CartItem[]
+  totalPrice Int        @default(0)
+
+  @@map("carts")
+}
+
+model CartItem {
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String  @db.ObjectId
+  user      User    @relation(fields: [userId], references: [id])
+  cartId    String  @db.ObjectId
+  cart      Cart    @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  productId String  @db.ObjectId
+  product   Product @relation(fields: [productId], references: [id])
+  quantity  Int     @default(1)
+
+  @@index([cartId, productId])
+  @@map("cartItems")
+}
+
+model Order {
+  id             String         @id @default(auto()) @map("_id") @db.ObjectId
+  userId         String         @db.ObjectId
+  user           User           @relation(fields: [userId], references: [id])
+  name           String
+  email          String
+  address        Address
+  phone          String
+  amount         Int
+  items          Json
+  currency       String         @default("inr")
+  paymentId      String?
+  paymentStatus  PaymentStatus  @default(FAILED)
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  orderStatus    OrderStatus    @default(PENDING)
+  deliveryStatus DeliveryStatus @default(CANCELLED)
+
+  @@map("orders")
+}
+
+enum PaymentStatus {
+  PAID
+  FAILED
+}
+
+enum OrderStatus {
+  PENDING
+  ACCEPTED
+  CANCELLED
+}
+
+enum DeliveryStatus {
+  CANCELLED
+  PROCESSING
+  INTRANSIT
+  DELIVERED
+}
+
+model ContactUs {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId()
+  name        String
+  email       String
+  phone       String
+  subject     String
+  description String
+
+  @@map("contactUs")
+}
