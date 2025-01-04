@@ -4,6 +4,9 @@ export default withAuth({
   pages: {
     signIn: '/login',
   },
+  async redirect({ url, baseUrl }) {
+    return baseUrl + '/account';
+  },
 });
 
 export const config = {
