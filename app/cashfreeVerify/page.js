@@ -1,4 +1,4 @@
-import CashfreeVerify from './_components/cashfreeVerify';
+import CashfreeVerify from './_components/CashfreeVerify';
 
 function Page() {
   return (
