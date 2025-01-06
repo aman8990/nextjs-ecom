@@ -5,8 +5,10 @@ import { AiFillProduct } from 'react-icons/ai';
 import { IoMdHome } from 'react-icons/io';
 import { TbMessageFilled } from 'react-icons/tb';
 import { usePathname } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 
 function MobileButton() {
+  const { data: session, status } = useSession();
   const pathname = usePathname();
 
   const isActive = (href) => pathname === href;
@@ -47,12 +49,21 @@ function MobileButton() {
           </Link>
         </li>
         <li className="p-2">
-          <Link href="/account">
-            <IoPerson
-              size={30}
-              className={isActive('/account') ? 'text-accent-400' : ''}
-            />
-          </Link>
+          {status === 'authenticated' ? (
+            <Link href="/account">
+              <IoPerson
+                size={30}
+                className={isActive('/account') ? 'text-accent-400' : ''}
+              />
+            </Link>
+          ) : (
+            <Link href="/login">
+              <IoPerson
+                size={30}
+                className={isActive('/account') ? 'text-accent-400' : ''}
+              />
+            </Link>
+          )}
         </li>
       </ul>
     </nav>
