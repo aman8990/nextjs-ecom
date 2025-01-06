@@ -11,9 +11,9 @@ import toast from 'react-hot-toast';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 function UpdateAddress() {
-  const searchParama = useSearchParams();
+  const searchParams = useSearchParams();
   const router = useRouter();
-  const routeNeeded = searchParama.get('cart');
+  const routeNeeded = searchParams.get('cart');
   const [isLoading, setIsLoading] = useState(false);
 
   const {

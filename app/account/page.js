@@ -1,4 +1,3 @@
-import getCurrentUser from '../_actions/getCurrentUser';
 import UserSettings from './_components/UserSettings';
 
 function Page() {

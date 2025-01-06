@@ -22,7 +22,7 @@ function CartItems({ currentUser }) {
     if (!currentUser) {
       toast.dismiss();
       toast.error('Please login first');
-      return router.push('/login');
+      return router.push('/login?cart=true');
     }
 
     if (!currentUser.phone) {

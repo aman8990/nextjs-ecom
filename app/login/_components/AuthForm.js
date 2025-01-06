@@ -6,7 +6,7 @@ import Input from '../../_components/Input';
 import AuthSocialButton from './AuthSocialButton';
 import { BsGithub, BsGoogle } from 'react-icons/bs';
 import Button from '@/app/_components/Button';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { signIn, useSession } from 'next-auth/react';
 import toast from 'react-hot-toast';
 import axios from 'axios';
@@ -19,14 +19,21 @@ function AuthForm() {
   const [isMounted, setIsMounted] = useState(false);
   const session = useSession();
   const router = useRouter();
+  const seacrhParams = useSearchParams();
+  const routeNeeded = seacrhParams.get('cart');
 
   useEffect(() => {
     setIsMounted(true);
 
     if (session?.status === 'authenticated') {
-      router.push('/');
+      if (routeNeeded) {
+        router.push('/cart');
+      } else {
+        router.push('/');
+      }
+      setIsMounted(false);
     }
-  }, [router, session?.status]);
+  }, [router, session?.status, routeNeeded]);
 
   const toggleVariant = useCallback(() => {
     if (variant === 'LOGIN') {

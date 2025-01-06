@@ -11,9 +11,9 @@ import dynamic from 'next/dynamic';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 function UpdateUserInfo() {
-  const searchParama = useSearchParams();
-  const routeNeeded = searchParama.get('address');
-  const routeNeededCart = searchParama.get('cart');
+  const searchParams = useSearchParams();
+  const routeNeeded = searchParams.get('address');
+  const routeNeededCart = searchParams.get('cart');
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
