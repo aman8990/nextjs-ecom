@@ -76,6 +76,7 @@ function Page() {
               placeholder="/products"
               register={register}
               disabled={isLoading}
+              autoComplete="off"
               validationRules={{
                 required: '* This field is required',
               }}
@@ -89,6 +90,7 @@ function Page() {
               placeholder="xxxxxxxxxxxx"
               register={register}
               disabled={isLoading}
+              autoComplete="off"
               validationRules={{
                 required: '* This field is required',
               }}
