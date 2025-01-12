@@ -3,12 +3,60 @@ import { FaPhoneAlt } from 'react-icons/fa';
 import { formatIndianCurrency } from '@/app/_utils/formatCurrency';
 import OrderItems from './OrderItems';
 import { format } from 'date-fns';
+import { jsPDF } from 'jspdf';
+import autoTable from 'jspdf-autotable';
+import Link from 'next/link';
 
 function OrderDetail({ order }) {
   const createdAt = order?.createdAt;
   const orderDate = format(new Date(createdAt), 'dd MMM yyyy');
   const address = order?.address;
   const fullAddress = `${address?.locality} , ${address?.city} , ${address?.district} , ${address?.state} , ${address?.pincode}`;
+
+  const handleDownloadInvoice = () => {
+    const doc = new jsPDF();
+
+    doc.setFontSize(30);
+    doc.text('INVOICE', 80, 15);
+
+    doc.setFontSize(14);
+    doc.setFont('helvetica', 'bold');
+    doc.text(`Order ID: ${order?.id}`, 10, 30);
+    doc.text(`Order Date: ${orderDate}`, 10, 37);
+    doc.text(`Name: ${order?.name}`, 10, 44);
+    doc.text(`Phone: ${order?.phone}`, 10, 51);
+    doc.text(`Email: ${order?.email}`, 10, 58);
+    doc.text(`Address: ${fullAddress}`, 10, 65);
+
+    doc.setTextColor(50, 168, 82);
+    doc.text(`Total Price: ${formatIndianCurrency(order?.amount)}`, 10, 75);
+
+    const items = order?.items.map((item) => [
+      item.productName,
+      item.quantity,
+      formatIndianCurrency(item.price * item.quantity),
+    ]);
+    autoTable(doc, {
+      startY: 85,
+      head: [['Item Name', 'Quantity', 'Price']],
+      body: items,
+      columnStyles: {
+        0: { cellWidth: 120 },
+        1: { cellWidth: 20, halign: 'center' },
+        2: { cellWidth: 50, cellPadding: { left: 12, top: 2 } },
+      },
+      headStyles: {
+        halign: 'center',
+        valign: 'middle',
+      },
+      styles: {
+        fontSize: 10,
+      },
+      margin: { horizontal: 10 },
+    });
+
+    doc.save(`Invoice-${order?.id}.pdf`);
+  };
 
   return (
     <div className="max-w-4xl mx-auto mt-10 space-y-5 text-lg mb-32">
@@ -46,7 +94,13 @@ function OrderDetail({ order }) {
         <h1>Delivery Status : {order?.deliveryStatus}</h1>
         <h1>Order Date : {orderDate}</h1>
         <button className="p-1 bg-accent-600 rounded-md text-white hover:bg-accent-500">
-          Track Order
+          <Link href={order?.trackingLink || '/'}>Track Order</Link>
+        </button>
+        <button
+          className="p-1 ml-2 bg-accent-600 rounded-md text-white hover:bg-accent-500"
+          onClick={handleDownloadInvoice}
+        >
+          Download Invoice
         </button>
       </div>
 

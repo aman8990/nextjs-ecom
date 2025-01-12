@@ -9,7 +9,7 @@ function ProductInfo({ fullDescription, images }) {
           className="flex flex-col items-center text-center my-20 gap-5 md:gap-2"
         >
           <Image
-            src={img}
+            src={img || '/grey.jpg'}
             alt={`Image ${index}`}
             width={200}
             height={200}

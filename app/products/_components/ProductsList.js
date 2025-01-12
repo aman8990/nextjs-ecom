@@ -48,7 +48,7 @@ function ProductsList({ product }) {
           onClick={() => router.push(`/products/${product.id}`)}
         >
           <Image
-            src={product.photo}
+            src={product.photo || '/grey.jpg'}
             alt="product-image"
             width={200}
             height={200}

@@ -17,6 +17,8 @@
     "bson": "^4.0.0",
     "cashfree-pg": "^4.3.6",
     "date-fns": "^4.1.0",
+    "jspdf": "^2.5.2",
+    "jspdf-autotable": "^3.8.4",
     "next": "15.0.3",
     "next-auth": "^4.24.11",
     "nodemailer": "^6.9.16",
