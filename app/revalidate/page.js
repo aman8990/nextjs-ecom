@@ -85,7 +85,7 @@ function Page() {
             <Input
               label="Secret Key"
               id="apiKey"
-              type="password"
+              type="text"
               errors={errors}
               placeholder="xxxxxxxxxxxx"
               register={register}
