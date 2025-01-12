@@ -1,6 +1,6 @@
 import Products from './_components/Products';
 
-export const revalidate = 60;
+export const revalidate = 31536000;
 
 function Page() {
   return (

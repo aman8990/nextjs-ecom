@@ -2,7 +2,7 @@ import { fetchProductById, fetchProducts } from '@/app/_libs/api';
 import Product from './_components/Product';
 import { ObjectId } from 'bson';
 
-export const revalidate = 60;
+export const revalidate = 31536000;
 
 export async function generateMetadata({ params }) {
   const { productId } = await params;
