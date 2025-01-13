@@ -16,6 +16,20 @@ function Product({ product }) {
   const productId = product.id;
   const { refreshCart } = useCart();
   const { data: session, status } = useSession();
+  const [currentImage, setCurrentImage] = useState(
+    product?.photo || '/grey.jpg'
+  );
+
+  const images = product?.images || [
+    '/image1.jpg',
+    '/image2.jpg',
+    '/image3.jpg',
+    '/image4.jpg',
+  ];
+
+  const handleImageClick = (image) => {
+    setCurrentImage(image);
+  };
 
   const handleAddToCart = async () => {
     if (status === 'unauthenticated') {
@@ -40,7 +54,7 @@ function Product({ product }) {
 
   return (
     <div className="flex flex-col items-center max-w-4xl gap-4">
-      <div className="h-40 w-40 md:h-52 md:w-52 bg-white flex justify-center items-center rounded-md">
+      {/* <div className="h-40 w-40 md:h-52 md:w-72 bg-white flex justify-center items-center rounded-md">
         <Image
           src={product?.photo || '/grey.jpg'}
           alt="product-image"
@@ -48,8 +62,39 @@ function Product({ product }) {
           width={200}
           className="h-[83.3%] w-[83.3%] transition-transform duration-300 ease-in-out hover:scale-110"
         />
+      </div> */}
+
+      <div className="flex flex-col items-center">
+        <div className="h-52 w-72 md:h-72 md:w-96 bg-white flex justify-center items-center rounded-md overflow-hidden cursor-pointer">
+          <Image
+            src={currentImage}
+            alt="product-image"
+            height={500}
+            width={500}
+            className="h-[90%] w-[90%] transition-transform duration-300 ease-in-out hover:scale-110 object-contain rounded-md"
+          />
+        </div>
+
+        <div className="flex mt-4 space-x-2 mb-3">
+          {images.map((image, index) => (
+            <div
+              key={index}
+              onClick={() => handleImageClick(image)}
+              className="cursor-pointer border-2 border-gray-300 rounded-md hover:border-blue-500"
+            >
+              <Image
+                src={image}
+                alt={`thumbnail-${index}`}
+                height={200}
+                width={200}
+                className="h-10 w-10 rounded-md"
+              />
+            </div>
+          ))}
+        </div>
       </div>
-      <div className="text-xl text-center">{product?.name}</div>
+
+      <div className="text-xl font-bold text-center">{product?.name}</div>
       <div className="text-center text-xs md:text-lg">
         {product.description}
       </div>
@@ -64,7 +109,9 @@ function Product({ product }) {
           {isLoading ? <SpinnerMini size={30} /> : 'Add to cart'}
         </button>
       </div>
-      <div className="text-center underline text-4xl my-10">Product Info</div>
+      <div className="text-center underline text-4xl mt-10 mb-2">
+        Product Info
+      </div>
       <div className="border-2 border-white rounded-md">
         <ProductInfo
           fullDescription={product?.fullDescription}

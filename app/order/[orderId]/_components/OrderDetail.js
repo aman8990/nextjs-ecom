@@ -27,9 +27,10 @@ function OrderDetail({ order }) {
     doc.text(`Phone: ${order?.phone}`, 10, 51);
     doc.text(`Email: ${order?.email}`, 10, 58);
     doc.text(`Address: ${fullAddress}`, 10, 65);
+    doc.text(`Payment Status: ${order.paymentStatus}`, 10, 72);
 
     doc.setTextColor(50, 168, 82);
-    doc.text(`Total Price: ${formatIndianCurrency(order?.amount)}`, 10, 75);
+    doc.text(`Total Price: ${formatIndianCurrency(order?.amount)}`, 10, 82);
 
     const items = order?.items.map((item) => [
       item.productName,
@@ -37,7 +38,7 @@ function OrderDetail({ order }) {
       formatIndianCurrency(item.price * item.quantity),
     ]);
     autoTable(doc, {
-      startY: 85,
+      startY: 92,
       head: [['Item Name', 'Quantity', 'Price']],
       body: items,
       columnStyles: {
@@ -93,15 +94,23 @@ function OrderDetail({ order }) {
         <h1>Order Status : {order?.orderStatus}</h1>
         <h1>Delivery Status : {order?.deliveryStatus}</h1>
         <h1>Order Date : {orderDate}</h1>
-        <button className="p-1 bg-accent-600 rounded-md text-white hover:bg-accent-500">
-          <Link href={order?.trackingLink || '/'}>Track Order</Link>
-        </button>
-        <button
-          className="p-1 ml-2 bg-accent-600 rounded-md text-white hover:bg-accent-500"
-          onClick={handleDownloadInvoice}
-        >
-          Download Invoice
-        </button>
+
+        {order?.paymentStatus === 'PAID' && (
+          <div>
+            {order?.trackingLink && (
+              <button className="p-1 bg-accent-600 rounded-md text-white hover:bg-accent-500">
+                <Link href={order?.trackingLink}>Track Order</Link>
+              </button>
+            )}
+
+            <button
+              className="p-1 ml-2 bg-accent-600 rounded-md text-white hover:bg-accent-500"
+              onClick={handleDownloadInvoice}
+            >
+              Download Invoice
+            </button>
+          </div>
+        )}
       </div>
 
       <div className="px-4 sm:px-8 py-3 space-y-2 border-2 border-white rounded-md">

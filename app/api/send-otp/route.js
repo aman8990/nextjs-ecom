@@ -1,7 +1,17 @@
 import crypto from 'crypto';
 import prisma from '@/app/_libs/prismadb';
 import { NextResponse } from 'next/server';
+import fs from 'fs';
+import path from 'path';
 import { sendEmail } from '@/app/_libs/emailSender';
+
+const getOTPEmailTemplate = (otp, email) => {
+  const templatePath = path.join('app/_libs', 'otpTemplate.html');
+  let html = fs.readFileSync(templatePath, 'utf-8');
+  html = html.replace('{{otp}}', otp);
+  html = html.replace('{{email}}', email);
+  return html;
+};
 
 export async function POST(request) {
   try {
@@ -46,11 +56,13 @@ export async function POST(request) {
       });
     }
 
+    const htmlContent = getOTPEmailTemplate(otp, email);
+
     await sendEmail({
       to: email,
-      subject: 'Your OTP Code',
+      subject: 'Signup OTP',
       text: `Your OTP is ${otp}. It is valid for 10 minutes.`,
-      html: `<p>Your OTP is <strong>${otp}</strong>. It is valid for 10 minutes.</p>`,
+      html: htmlContent,
     });
 
     return NextResponse.json('OTP sent successfully', { status: 200 });

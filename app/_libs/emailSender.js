@@ -12,7 +12,7 @@ export async function sendEmail({ to, subject, text, html }) {
   });
 
   const mailOptions = {
-    from: `App <${process.env.EMAIL_FROM}>`,
+    from: `E-Com <${process.env.EMAIL_FROM}>`,
     to,
     subject,
     text,

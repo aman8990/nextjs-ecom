@@ -6,14 +6,14 @@ function ProductInfo({ fullDescription, images }) {
       {images.map((img, index) => (
         <div
           key={index}
-          className="flex flex-col items-center text-center my-20 gap-5 md:gap-2"
+          className="flex flex-col items-center text-center my-10 gap-5 md:gap-2"
         >
           <Image
             src={img || '/grey.jpg'}
             alt={`Image ${index}`}
             width={200}
             height={200}
-            className=""
+            className=" rounded-md"
           />
 
           <div className="mx-2 text-xs md:text-lg">

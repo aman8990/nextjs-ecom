@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import img1 from '@/public/img1.jpg';
-import img2 from '@/public/img2.jpg';
+import img5 from '@/public/img5.jpg';
 import '@/app/animation.css';
 import Image from 'next/image';
 
@@ -10,7 +10,7 @@ function HomepageImage() {
   const router = useRouter();
 
   function handleClick(id) {
-    router.push(`/product?id=${id}`);
+    router.push(`/products/${id}`);
   }
 
   return (
@@ -24,7 +24,7 @@ function HomepageImage() {
             onClick={() => handleClick('669965381b4c2e33e5606d3a')}
           />
           <Image
-            src={img2}
+            src={img5}
             alt="Second Image"
             className="absolute w-full h-full object-fill animate-slide animation-delay-3000"
             onClick={() => handleClick('667998c1c897ebfd00eb2398')}

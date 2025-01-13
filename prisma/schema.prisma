@@ -15,7 +15,7 @@ model User {
   phone            String?
   emailVerified    DateTime?
   address          Address?
-  role             String    @default("user")
+  role             String    @default("admin")
   hashedPassword   String?
   otp              String?
   otpExpires       DateTime?
