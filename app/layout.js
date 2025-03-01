@@ -5,6 +5,7 @@ import FooterMobile from './_components/HeaderMobile/FooterMobile';
 import AuthContext from './_context/AuthContext';
 import ToasterContext from './_context/ToasterContext';
 import SyncCartOnLogin from './_components/syncCartOnLogin';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 const josefin = Josefin_Sans({
   subsets: ['latin'],
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
       >
         <AuthContext>
           <ToasterContext />
+          <SpeedInsights />
           <Header />
           <SyncCartOnLogin />
           <div>{children}</div>
