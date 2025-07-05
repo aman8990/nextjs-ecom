@@ -38,7 +38,7 @@ function Page() {
   };
 
   if (isLoading && page === 1) return <Spinner />;
-  if (error)
+  if (error || orders.length === 0)
     return (
       <div className="flex justify-center flex-col items-center mt-20">
         <h1 className="p-4 text-3xl border-2 border-white rounded-md max-w-2xl">
