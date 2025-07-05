@@ -53,7 +53,7 @@ function Product({ product }) {
   };
 
   return (
-    <div className="flex flex-col items-center max-w-4xl gap-4">
+    <div className="flex flex-col items-center max-w-[80rem] gap-4">
       {/* <div className="h-40 w-40 md:h-52 md:w-72 bg-white flex justify-center items-center rounded-md">
         <Image
           src={product?.photo || '/grey.jpg'}
