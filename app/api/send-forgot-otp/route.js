@@ -5,13 +5,13 @@ import fs from 'fs';
 import path from 'path';
 import { sendEmail } from '@/app/_libs/emailSender';
 
-const getOTPEmailTemplate = (otp, email) => {
-  const templatePath = path.join('app/_libs', 'forgotOtpTemplate.html');
-  let html = fs.readFileSync(templatePath, 'utf-8');
-  html = html.replace('{{otp}}', otp);
-  html = html.replace('{{email}}', email);
-  return html;
-};
+// const getOTPEmailTemplate = (otp, email) => {
+//   const templatePath = path.join('app/_libs', 'forgotOtpTemplate.html');
+//   let html = fs.readFileSync(templatePath, 'utf-8');
+//   html = html.replace('{{otp}}', otp);
+//   html = html.replace('{{email}}', email);
+//   return html;
+// };
 
 export async function POST(request) {
   try {
@@ -43,13 +43,13 @@ export async function POST(request) {
       },
     });
 
-    const htmlContent = getOTPEmailTemplate(otp, email);
+    // const htmlContent = getOTPEmailTemplate(otp, email);
 
     await sendEmail({
       to: email,
       subject: 'Forgot Password OTP',
       text: `Your OTP for Forgot Password is ${otp}. It is valid for 10 minutes.`,
-      html: htmlContent,
+      html: `<p>Your OTP for Forgot Password is <strong>${otp}</strong>. It is valid for 10 minutes.</p>`,
     });
 
     return NextResponse.json('OTP sent successfully', { status: 200 });
