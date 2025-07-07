@@ -69,8 +69,7 @@ app/
 ├── globals.css       # Global Tailwind styles
 ├── page.js           # Homepage (landing page)
 ├── middleware.js     # Middleware for route protection (auth guard)
-├── not-found.js      # Custom 404 error page
-
+└── not-found.js      # Custom 404 error page
 
 🛠 Note:
 
