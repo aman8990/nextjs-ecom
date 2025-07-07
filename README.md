@@ -6,7 +6,10 @@ A full-featured, modern e-commerce platform built with **Next.js 15**, designed 
 
 🔗 [Live Site](https://nextjs-ecom-ochre.vercel.app)
 
-📬 Contact: [amandalal899@gmail.com](mailto:amandalal899@gmail.com)
+## 📬 Contact
+
+Created by [Aman Kumar](https://github.com/aman8990)  
+📧 Email: [amandalal899@gmail.com](mailto:amandalal899@gmail.com)
 
 ## 🧩 Features
 
