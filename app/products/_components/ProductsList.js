@@ -9,8 +9,8 @@ import useCart from '@/app/_hooks/useCart';
 import { useState } from 'react';
 import SpinnerMini from '@/app/_components/SpinnerMini';
 import axios from 'axios';
-import { addItemToLocalCart } from '@/app/_libs/api';
 import { useSession } from 'next-auth/react';
+import { addItemToLocalCart } from '@/app/_actions/data-service';
 
 function ProductsList({ product }) {
   const router = useRouter();

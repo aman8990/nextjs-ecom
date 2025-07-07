@@ -9,7 +9,7 @@ import { useState } from 'react';
 import toast from 'react-hot-toast';
 import SpinnerMini from '@/app/_components/SpinnerMini';
 import { useSession } from 'next-auth/react';
-import { addItemToLocalCart } from '@/app/_libs/api';
+import { addItemToLocalCart } from '@/app/_actions/data-service';
 
 function Product({ product }) {
   const [isLoading, setIsLoading] = useState(false);

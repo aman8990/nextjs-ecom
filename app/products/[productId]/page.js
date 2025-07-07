@@ -1,6 +1,6 @@
-import { fetchProductById, fetchProducts } from '@/app/_libs/api';
 import Product from './_components/Product';
 import { ObjectId } from 'bson';
+import { fetchProductById, fetchProducts } from '@/app/_actions/data-service';
 
 export const revalidate = 31536000;
 

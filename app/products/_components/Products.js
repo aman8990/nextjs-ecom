@@ -1,4 +1,4 @@
-import { fetchProducts } from '@/app/_libs/api';
+import { fetchProducts } from '@/app/_actions/data-service';
 import ProductsList from './ProductsList';
 
 async function Products() {

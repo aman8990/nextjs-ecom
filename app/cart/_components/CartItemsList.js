@@ -1,8 +1,11 @@
 'use client';
 
+import {
+  addItemToLocalCart,
+  deleteLocalCartItem,
+} from '@/app/_actions/data-service';
 import SpinnerMini from '@/app/_components/SpinnerMini';
 import useCart from '@/app/_hooks/useCart';
-import { addItemToLocalCart, deleteLocalCartItem } from '@/app/_libs/api';
 import { formatIndianCurrency } from '@/app/_utils/formatCurrency';
 import axios from 'axios';
 import { useSession } from 'next-auth/react';
