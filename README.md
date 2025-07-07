@@ -50,6 +50,8 @@ A full-featured, modern e-commerce platform built with **Next.js 15**, designed 
 ---
 
 ## 📂 Project Structure
+
+```bash
 app/
 ├── api/              # API endpoints (auth, checkout, etc.)
 ├── _actions/         # Next.js Server Actions (e.g., product logic, current user)
@@ -70,9 +72,9 @@ app/
 ├── page.js           # Homepage (landing page)
 ├── middleware.js     # Middleware for route protection (auth guard)
 └── not-found.js      # Custom 404 error page
+```
 
-🛠 Note:
+🛠 **Note:**
 
-•  The admin panel is hosted separately and is not embedded in this project.
-•  The /revalidate route is used to manually trigger static page regeneration (SSG) using a secure revalidate-key.
-
+- • The **admin panel is hosted separately** and is not embedded in this project.  
+- • The `/revalidate` route is used to **manually trigger static page regeneration** (SSG) using a secure `revalidate-key`.
