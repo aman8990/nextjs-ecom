@@ -52,26 +52,30 @@ A full-featured, modern e-commerce platform built with **Next.js 15**, designed 
 ## 📂 Project Structure
 
 ```bash
-app/
-├── api/              # API endpoints (auth, checkout, etc.)
-├── _actions/         # Next.js Server Actions (e.g., product logic, current user)
-├── _context/         # React Contexts (e.g., Auth context, Toast context)
-├── _components/      # Reusable UI components (buttons, forms)
-├── _utils/           # Utility/helper functions
-├── _hooks/           # Custom hooks (e.g., useCart, useOrders)
-├── _libs/            # Core libraries (e.g., prismadb, emailSender)
-├── account/          # User account info and settings
-├── cart/             # User's shopping cart
-├── login/            # Login page
-├── order/            # User's order summary/history
-├── revalidate/       # Route for revalidating static pages using secret key
-├── products/         # Products listing route
-│   └── [productId]/  # Dynamic product details page
-├── layout.js         # Root layout for the app
-├── globals.css       # Global Tailwind styles
-├── page.js           # Homepage (landing page)
-├── middleware.js     # Middleware for route protection (auth guard)
-└── not-found.js      # Custom 404 error page
+project/
+  ├── middleware.js     # Middleware for route protection (auth guard)
+  ├── prisma/
+  │   └── schema.prisma # Prisma schema for MongoDB
+
+  app/
+  ├── api/              # API endpoints (auth, checkout, etc.)
+  ├── _actions/         # Next.js Server Actions (e.g., product logic, current user)
+  ├── _context/         # React Contexts (e.g., Auth context, Toast context)
+  ├── _components/      # Reusable UI components (buttons, forms)
+  ├── _utils/           # Utility/helper functions
+  ├── _hooks/           # Custom hooks (e.g., useCart, useOrders)
+  ├── _libs/            # Core libraries (e.g., prismadb, emailSender)
+  ├── account/          # User account info and settings
+  ├── cart/             # User's shopping cart
+  ├── login/            # Login page
+  ├── order/            # User's order summary/history
+  ├── revalidate/       # Route for revalidating static pages using secret key
+  ├── products/         # Products listing route
+  │   └── [productId]/  # Dynamic product details page
+  ├── layout.js         # Root layout for the app
+  ├── globals.css       # Global Tailwind styles
+  ├── page.js           # Homepage (landing page)
+  └── not-found.js      # Custom 404 error page
 ```
 
 🛠 **Note:**
