@@ -6,11 +6,6 @@ A full-featured, modern e-commerce platform built with **Next.js 15**, designed 
 
 🔗 [Live Site](https://nextjs-ecom-ochre.vercel.app)
 
-## 📬 Contact
-
-Created by [Aman Kumar](https://github.com/aman8990)  
-📧 Email: [amandalal899@gmail.com](mailto:amandalal899@gmail.com)
-
 ## 🧩 Features
 
 - 🔐 User authentication (Email/Password + Google & Github OAuth)
@@ -141,3 +136,10 @@ npx prisma generate
 ```bash
 npm run dev
 ```
+
+---
+
+## 📬 Contact
+
+Created by [Aman Kumar](https://github.com/aman8990)  
+📧 Email: [amandalal899@gmail.com](mailto:amandalal899@gmail.com)
