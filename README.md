@@ -136,12 +136,3 @@ npx prisma generate
 ```bash
 npm run dev
 ```
-
-## 📸 Screenshots
-
-| Home Page | Product Page | Cart | Login Page |
-|-----------|--------------|------|
-| ![Home](public/home.png) | ![Product](public/product.png) | ![Cart](public/cart.png) | ![Login](public/login.png) |
-
-
-
