@@ -82,3 +82,51 @@ project/
 
 - The **admin panel is hosted separately** and is not embedded in this project.  
 - The `/revalidate` route is used to **manually trigger static page regeneration data** (SSG) using a secure `revalidate-key`.
+
+
+## 🧪 Getting Started
+
+Follow these steps to set up the project locally.
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/aman8990/nextjs-ecom.git
+cd nextjs-ecom
+
+npm install
+
+# Database (MongoDB via Prisma)
+DATABASE_URL=mongodb+srv://<username>:<password>@cluster.mongodb.net/dbname
+
+# NextAuth Configuration
+NEXTAUTH_SECRET=your_nextauth_secret
+NEXTAUTH_URL=http://localhost:3000
+
+# Google OAuth
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+
+# GitHub OAuth
+GITHUB_CLIENT_ID=your_github_client_id
+GITHUB_CLIENT_SECRET=your_github_client_secret
+
+# Cashfree Payment Gateway (Client-side only)
+CASHFREE_CLIENT_ID=your_cashfree_client_id
+CASHFREE_CLIENT_SECRET=your_cashfree_client_secret
+
+# Nodemailer / Email
+EMAIL_SERVER_USER=your_email@example.com
+EMAIL_SERVER_PASSWORD=your_email_password
+EMAIL_SERVER_HOST=smtp.example.com
+EMAIL_SERVER_PORT=587
+EMAIL_FROM=your_email@example.com
+
+# Static Site Revalidation Secret
+REVALIDATE_SECRET=your_custom_revalidate_key
+
+
+npx prisma generate
+
+npm run dev
+
