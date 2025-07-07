@@ -76,5 +76,5 @@ app/
 
 🛠 **Note:**
 
-- • The **admin panel is hosted separately** and is not embedded in this project.  
-- • The `/revalidate` route is used to **manually trigger static page regeneration data** (SSG) using a secure `revalidate-key`.
+- The **admin panel is hosted separately** and is not embedded in this project.  
+- The `/revalidate` route is used to **manually trigger static page regeneration data** (SSG) using a secure `revalidate-key`.
