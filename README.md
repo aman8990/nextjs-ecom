@@ -84,6 +84,10 @@ project/
 - The `/revalidate` route is used to **manually trigger static page regeneration data** (SSG) using a secure `revalidate-key`.
 
 
+
+
+
+
 ## 🧪 Getting Started
 
 Follow these steps to set up the project locally.
