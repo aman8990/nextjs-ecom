@@ -59,12 +59,12 @@ project/
 
   app/
     ├── api/               # API endpoints (auth, checkout, etc.)
-    ├── _actions/          # Next.js Server Actions (e.g., product logic, current user)
-    ├── _context/          # React Contexts (e.g., Auth context, Toast context)
-    ├── _components/       # Reusable UI components (buttons, forms)
+    ├── _actions/          # Next.js Server Actions (e.g. product logic, current user)
+    ├── _context/          # React Contexts (e.g. Auth context, Toast context)
+    ├── _components/       # Reusable UI components (buttons, input etc.)
     ├── _utils/            # Utility/helper functions
-    ├── _hooks/            # Custom hooks (e.g., useCart, useOrders)
-    ├── _libs/             # Core libraries (e.g., prismadb, emailSender)
+    ├── _hooks/            # Custom hooks (useCart, useOrders)
+    ├── _libs/             # Core libraries (prismadb, emailSender, fetcher etc.)
     ├── account/           # User account info and settings
     ├── cart/              # User's shopping cart
     ├── login/             # Login page
