@@ -5,6 +5,7 @@ A full-featured, modern e-commerce platform built with **Next.js 15**, designed 
 ## 🚀 Live Demo
 
 🔗 [Live Site](https://nextjs-ecom-ochre.vercel.app)
+🔗 [Admin Panel](https://nextjs-ecom-admin-panel.vercel.app)
 
 ## 🧩 Features
 
