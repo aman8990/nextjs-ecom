@@ -18,6 +18,7 @@ A full-featured, modern e-commerce platform built with **Next.js 15**, designed 
 - 🌐 SWR for client-side data fetching
 - 🎨 Tailwind CSS for responsive design
 - 🔒 Protected routes with NextAuth and middleware
+- Incremental Static Regeneration (ISR).
 
 ---
 
@@ -82,7 +83,7 @@ project/
 🛠 **Note:**
 
 - The **admin panel is hosted separately** and is not embedded in this project.  
-- The `/revalidate` route is used to **manually trigger static page regeneration data** (SSG) using a secure `revalidate-key`.
+- The `/revalidate` route is used to **manually trigger Incremental Static Regeneration (ISR)** using a secure `revalidate-key`.
 
 ---
 
