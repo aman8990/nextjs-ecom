@@ -1,6 +1,6 @@
 # 🛒 Next.js E-commerce App
 
-A full-featured, modern e-commerce platform built with Next.js 15, designed to provide a seamless shopping experience with secure authentication, dynamic payments, cart management, and order processing. Powered by Incremental Static Regeneration (ISR), it ensures fast performance and up-to-date content without rebuilding the entire site.
+A full-featured, modern e-commerce platform built with Next.js 15, designed to provide a seamless shopping experience with secure authentication, secure payments, cart management, and order processing. Powered by Incremental Static Regeneration (ISR), it ensures fast performance and up-to-date content without rebuilding the entire site.
 
 ## 🚀 Live Demo
 
